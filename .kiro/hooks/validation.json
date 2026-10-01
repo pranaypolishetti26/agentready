@@ -1,0 +1,28 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Validate JavaScript changes",
+      "description": "Run local configuration, syntax, unit and generated-input checks after relevant JS changes.",
+      "trigger": "PostFileSave",
+      "matcher": "(^|/)(src/.*\\.js|tests/.*\\.(js|mjs)|server\\.js|\\.kiro/(scripts|tests)/.*\\.mjs)$",
+      "action": {
+        "type": "command",
+        "command": "node .kiro/scripts/validate.mjs"
+      },
+      "timeout": 60,
+      "enabled": true
+    },
+    {
+      "name": "Validate completed spec task",
+      "description": "Verify project checks after a spec task; failures require correction.",
+      "trigger": "PostTaskExec",
+      "action": {
+        "type": "command",
+        "command": "node .kiro/scripts/validate.mjs"
+      },
+      "timeout": 60,
+      "enabled": true
+    }
+  ]
+}

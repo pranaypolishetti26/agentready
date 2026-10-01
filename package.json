@@ -1,0 +1,14 @@
+{
+  "name": "agentready",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Analyze a public GitHub repository for AI-agent readiness.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

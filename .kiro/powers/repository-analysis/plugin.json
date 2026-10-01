@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "repository-analysis",
+  "version": "1.0.0",
+  "description": "Review repository readiness for AI coding agents using source evidence, documented validation and prioritized recommendations.",
+  "author": {
+    "name": "AgentReady contributors"
+  },
+  "keywords": [
+    "repository readiness",
+    "agent readiness",
+    "repository analysis",
+    "coding agent",
+    "agent instructions"
+  ],
+  "license": "MIT"
+}

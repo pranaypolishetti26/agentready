@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgentReady analyzes public GitHub repositories for AI-agent readiness." />
+  <title>AgentReady — Repository readiness for coding agents</title>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="AgentReady home">
+      <span class="brand-mark">AR</span>
+      <span>AgentReady</span>
+    </a>
+    <a class="github-link" href="https://github.com" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Repository intelligence for coding agents</div>
+      <h1>Is your repo ready for an AI coding agent?</h1>
+      <p class="hero-copy">Analyze a public GitHub repository for the context, tests, automation, and documentation an agent needs to work safely and effectively.</p>
+
+      <form id="repo-form" class="analyze-form">
+        <label for="repo-url">Public GitHub repository</label>
+        <div class="input-row">
+          <input id="repo-url" name="repo-url" type="url" autocomplete="url" placeholder="https://github.com/owner/repository" required />
+          <button id="analyze-button" type="submit">Analyze repository</button>
+        </div>
+        <p class="hint">No sign-in required. AgentReady uses GitHub's public API and does not store repository data.</p>
+      </form>
+
+      <div id="error" class="error" role="alert" hidden></div>
+    </section>
+
+    <section id="results" class="results" hidden aria-live="polite">
+      <div class="results-head">
+        <div>
+          <div class="eyebrow">Analysis complete</div>
+          <h2 id="repo-name">Repository</h2>
+          <p id="repo-meta" class="muted"></p>
+        </div>
+        <div class="score-ring" id="score-ring" aria-label="Readiness score">
+          <strong id="score-value">0</strong>
+          <span>/100</span>
+        </div>
+      </div>
+
+      <div class="summary-grid">
+        <article class="summary-card">
+          <span class="summary-label">Readiness</span>
+          <strong id="score-label">—</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Signals found</span>
+          <strong id="signals-found">0</strong>
+        </article>
+        <article class="summary-card">
+          <span class="summary-label">Top priority</span>
+          <strong id="top-priority">—</strong>
+        </article>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">Repository signals</span>
+              <h3>What AgentReady found</h3>
+            </div>
+          </div>
+          <div id="checks" class="checks"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <span class="panel-kicker">Action plan</span>
+              <h3>Recommended next steps</h3>
+            </div>
+          </div>
+          <ol id="recommendations" class="recommendations"></ol>
+        </section>
+      </div>
+
+      <section class="panel evidence-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="panel-kicker">Evidence</span>
+            <h3>Files and conventions detected</h3>
+          </div>
+        </div>
+        <div id="evidence" class="evidence"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>AgentReady provides structural guidance, not a security audit. Always verify recommendations against the source code.</p>
+  </footer>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>
